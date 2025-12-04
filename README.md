@@ -5,13 +5,14 @@ A modern, production-ready React application for managing products and orders. B
 ## 🚀 Features
 
 ### Product Management
+
 - **Product List Page**: Server-side paginated DataGrid with advanced filtering
   - Search by product name (debounced)
   - Filter by category
   - Price range slider
   - Server-side pagination and sorting
   - Product prefetching on hover
-- **Product Details Page**: 
+- **Product Details Page**:
   - Full product information display
   - Image gallery
   - Edit stock quantity with form validation
@@ -19,7 +20,8 @@ A modern, production-ready React application for managing products and orders. B
   - Optimistic UI updates
 
 ### Order Management
-- **Order List Page**: 
+
+- **Order List Page**:
   - Sortable and filterable order table
   - Status badges (Pending, Processing, Shipped, Delivered, Cancelled)
   - Server-side pagination
@@ -33,7 +35,7 @@ A modern, production-ready React application for managing products and orders. B
 - **Redux Toolkit** - State management with async thunks
 - **Material UI (MUI)** - Component library
 - **@mui/x-data-grid** - Advanced data grid component
-- **React Router v6** - Client-side routing
+- **React Router v7** - Client-side routing
 - **React Hook Form + Yup** - Form handling and validation
 - **Axios** - HTTP client
 - **Notistack** - Toast notifications
@@ -43,17 +45,20 @@ A modern, production-ready React application for managing products and orders. B
 ## 📦 Installation
 
 1. Clone the repository:
+
 ```bash
 git clone <repository-url>
 cd products-admin
 ```
 
 2. Install dependencies:
+
 ```bash
 npm install
 ```
 
 3. Start the development server:
+
 ```bash
 npm run dev
 ```
@@ -71,16 +76,18 @@ src/
 │   ├── AppLayout.tsx     # Main layout with sidebar
 │   ├── LoadingFallback.tsx
 │   ├── OrderStatusBadge.tsx
-│   └── ConfirmationDialog.tsx
+│   ├── ConfirmationDialog.tsx
+│   ├── ErrorBoundary.tsx
+│   ├── FilterPanel.tsx
+│   └── ProductCard.tsx
+├── contexts/
+│   └── ThemeContext.tsx  # Theme context with dark mode
 ├── features/
 │   ├── products/
 │   │   ├── productsApi.ts       # API calls
 │   │   ├── productSlice.ts      # Redux slice
 │   │   ├── ProductListPage.tsx
 │   │   ├── ProductDetailsPage.tsx
-│   │   ├── components/
-│   │   │   ├── ProductCard.tsx
-│   │   │   └── FilterPanel.tsx
 │   │   └── hooks/
 │   │       ├── useDebounce.ts
 │   │       └── usePrefetchProduct.ts
@@ -96,6 +103,7 @@ src/
 │   ├── product.ts
 │   └── order.ts
 └── utils/
+    ├── apiClient.ts      # Axios instance configuration
     └── format.ts         # Utility functions
 ```
 
@@ -104,7 +112,7 @@ src/
 ### Performance Optimizations
 
 1. **Code Splitting**: All routes are lazy-loaded with `React.lazy()` and `Suspense`
-2. **Memoization**: 
+2. **Memoization**:
    - Components wrapped with `React.memo`
    - Selectors using `createSelector` from Reselect
    - `useMemo` and `useCallback` for expensive operations
@@ -130,8 +138,10 @@ src/
 ### UI/UX
 
 - **Material UI** components throughout
+- **Dark mode toggle** with theme persistence
 - Responsive layout with sidebar navigation
 - Loading states and error handling
+- Error boundaries for graceful error handling
 - Toast notifications for user feedback
 - Form validation with Yup schemas
 
@@ -141,6 +151,9 @@ src/
 - `npm run build` - Build for production
 - `npm run preview` - Preview production build
 - `npm run lint` - Run ESLint
+- `npm run lint:fix` - Fix ESLint errors automatically
+- `npm run format` - Format code with Prettier
+- `npm run format:check` - Check code formatting
 
 ## 📝 API Endpoints Used
 
@@ -152,7 +165,9 @@ src/
 ## 🎨 Architecture Decisions
 
 ### State Management Choice
+
 Redux Toolkit was chosen for:
+
 - Centralized state management
 - Excellent DevTools support
 - Built-in async thunk support
@@ -160,18 +175,21 @@ Redux Toolkit was chosen for:
 - Scalability for larger applications
 
 ### Component Architecture
+
 - Feature-based folder structure
 - Separation of concerns (API, state, UI)
 - Reusable components in shared folder
 - Custom hooks for business logic
 
 ### API Integration Strategy
+
 - Axios for HTTP requests
 - Centralized API modules per feature
 - Error handling with user-friendly messages
 - Async thunks for Redux integration
 
 ### UI/UX Decisions
+
 - Material UI for consistent design system
 - Server-side pagination for large datasets
 - Debounced search for better performance
@@ -184,7 +202,6 @@ No environment variables required. The app uses the public DummyJSON API.
 
 ## 🚧 Future Enhancements
 
-- Dark mode toggle
 - Advanced filtering options
 - Bulk operations
 - Export functionality
@@ -202,5 +219,4 @@ Built as a technical assessment project.
 
 ---
 
-**Note**: This application uses the DummyJSON API for demonstration purposes. In a production environment, you would connect to your own backend API.
-
+**Note**: This application uses the DummyJSON API for demonstration purposes.

@@ -1,3 +1,6 @@
+# Hosted Application
+https://inventory-order-management-system.vercel.app/products
+
 # Products Admin Panel
 
 A modern, production-ready React application for managing products and orders. Built with React 19, TypeScript, Redux Toolkit, and Material UI.
